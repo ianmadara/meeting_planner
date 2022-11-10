@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+    Welcome
+{% endblock %}
+{% block content %}
+    {%  load static %}
+    <h1>Welcome to the meeting planner!</h1>
+    <p>
+        This is the demo application for the course
+        <em>Django : Getting Started</em> on
+        <a href="google.com">Google</a>
+    </p>
+    <img src="{% static 'website/calender.png' %}" width="100px">
+    <h2>Meetings</h2>
+    <ul>
+        {% for meeting in meetings %}
+            <li>
+                <a href="{% url 'meeting' meeting.id %}">
+                    {{ meeting.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'rooms' %}">View Rooms</a>
+{% endblock %}
